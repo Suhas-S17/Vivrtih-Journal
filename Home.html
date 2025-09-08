@@ -10,19 +10,348 @@
     <meta name="theme-color" content="#007bff">
     <meta name="format-detection" content="telephone=no">
     <title>Vivrtih Journal of Food Science and Clinical Nutrition</title>
-    <meta name="description" content=" Open access, peer-reviewed journal for student research in food science and clinical nutrition. Publishing high-quality research from emerging scholars.">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Open access, peer-reviewed journal for student research in food science and clinical nutrition. Publishing high-quality research from emerging scholars.">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header and Navigation */
+        .header {
+            background-color: #fff;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-brand .logo {
+            height: 50px;
+        }
+
+        .nav-toggle {
+            cursor: pointer;
+            display: block; /* Show by default on mobile */
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        .nav-menu {
+            display: none; /* Hide by default on mobile */
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            transition: max-height 0.4s ease-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .nav-menu.active {
+            display: flex;
+            max-height: 500px; /* Adjust as needed */
+        }
+
+        .nav-menu a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            border-bottom: 1px solid #eee;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #007bff;
+        }
+
+        @media (min-width: 768px) {
+            .navbar {
+                flex-wrap: nowrap;
+            }
+
+            .nav-toggle {
+                display: none;
+            }
+
+            .nav-menu {
+                display: flex;
+                flex-direction: row;
+                width: auto;
+                max-height: none;
+                overflow: visible;
+                border-top: none;
+            }
+
+            .nav-menu a {
+                border-bottom: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #004080;
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-logo {
+            max-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8em;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2em;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 10px auto 20px;
+        }
+
+        .volume-info {
+            background-color: #0056b3;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .volume-info h2 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .hero-actions .btn {
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: #fff;
+            color: #004080;
+            border: 2px solid #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #f4f4f4;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Main Content Grid */
+        .main-content {
+            padding: 40px 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                order: -1; /* Puts the sidebar at the top on small screens */
+            }
+        }
+
+        /* Left Column Sections */
+        .content-left {
+            padding: 20px;
+        }
+
+        .section h2 {
+            color: #004080;
+            margin-top: 0;
+            border-bottom: 2px solid #004080;
+            padding-bottom: 10px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .card p {
+            text-align: justify;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section h3 {
+            color: #004080;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+
+        .info-links, .important-links {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-links a, .important-links a {
+            text-decoration: none;
+            color: #555;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            transition: color 0.3s;
+        }
+
+        .info-links a:hover, .important-links a:hover {
+            color: #007bff;
+        }
+
+        .sidebar-logo {
+            text-align: center;
+        }
+
+        .sidebar-logo-img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #004080;
+            color: #fff;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-section {
+            flex: 1 1 200px;
+        }
+
+        .footer-section h4 {
+            color: #fff;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-section li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section li a:hover {
+            color: #ccc;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5em;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ccc;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #fff;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <nav class="navbar">
-                <div class="nav-brand">                        <img src="assets/Vivrtih-logo.svg" alt="Vivrtih Journal Logo" class="logo">
+                <div class="nav-brand">
+                    <!-- Placeholder for the logo. The original path was 'assets/Vivrtih-logo.svg' -->
+                    <img src="https://placehold.co/150x50/cccccc/333333?text=Logo" alt="Vivrtih Journal Logo" class="logo">
                 </div>
                 <div class="nav-toggle" id="nav-toggle">
                     <span></span>
@@ -47,21 +376,19 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-logo">
-                    <img src="assets/Vivrtih-main-logo.svg" alt="Vivrtih Journal of Food Science and Clinical Nutrition" class="main-logo">
+                    <!-- Placeholder for the main logo. The original path was 'assets/Vivrtih-main-logo.svg' -->
+                    <img src="https://placehold.co/300x100/cccccc/333333?text=Journal+Logo" alt="Vivrtih Journal of Food Science and Clinical Nutrition" class="main-logo">
                 </div>
                 <div class="hero-text">
-                    <h1>Vivrtih Journal</h1>
-                    <p class="hero-subtitle">An open-access, peer-reviewed journal for research in food science and clinical nutrition</p>
-                    
-                    </div>
-                    <div class="volume-info">
-                        <h2>Vol. 3, Issue 2 - Latest Research in Food Science!</h2>
-                        <p>See the Call for Papers & Submission info</p>
-                    </div>
-                    <div class="hero-actions">
-                        <a href="submissions.html" class="btn btn-primary btn-large">Make a Submission</a>
-                        <a href="about.html" class="btn btn-outline btn-large">Learn More</a>
-                    </div>
+                    <h1>Vivrtih Journal of Food Science and Clinical Nutrition</h1>
+                    <p class="hero-subtitle">An international open-access, peer-reviewed journal</p>
+                </div>
+                <div class="volume-info">
+                    <h2>Call for Papers, Volume 1, Issue 1</h2>
+                </div>
+                <div class="hero-actions">
+                    <a href="submissions.html" class="btn btn-primary btn-large">Make a Submission</a>
+                    <a href="about.html" class="btn btn-outline btn-large">Learn More</a>
                 </div>
             </div>
         </div>
@@ -77,25 +404,20 @@
                     <section class="section" id="about">
                         <h2>About the Journal</h2>
                         <div class="card">
-                            <p>Vivrtih Journal of Food Science and Clinical Nutrition is an online, open-access, and peer-reviewed international journal dedicated to publishing high-quality research in the fields of food science, nutrition, and dietetics. The journal emphasizes translating scientific discovery into practical solutions, bridging the gap between fundamental research and real-world applications.</p> 
- <p>The journal follows a continuous publication model, with articles being published online as soon as they are accepted. Issues are published twice a year, ensuring the rapid dissemination of scientific knowledge. While we embrace academic excellence, we also welcome submissions from students, early-career researchers, and young professionals.</p>
-
-                            <a href="#" class="read-more">Read More</a>
+                            <p>Vivrtih Journal of Food Science and Clinical Nutrition is an online, open-access, and peer-reviewed international journal dedicated to publishing high-quality research in the fields of food science, nutrition, and dietetics. The journal emphasizes translating scientific discovery into practical solutions, bridging the gap between fundamental research and real-world applications.</p>
+                            <p>The journal follows a continuous publication model, with articles being published online as soon as they are accepted. Issues are published twice a year, ensuring the rapid dissemination of scientific knowledge. While we embrace academic excellence, we also welcome submissions from students, early-career researchers, and young professionals.</p>
                         </div>
                     </section>
 
                     <!-- Announcements Section -->
                     <section class="section" id="announcements">
                         <h2>Announcements</h2>
-                        
-                        <article class="announcement-card">
+                        <article class="announcement-card card">
                             <h3><a href="#">Call For Papers</a></h3>
                             <p class="date">2025-07-15</p>
                             <p>We are pleased to announce the call for papers for our inaugural issue. Submissions are now open, and we invite researchers and students to submit high-quality work that aligns with our scope in the fields of food science, nutrition, and dietetics.</p>
                             <p>As an open-access journal committed to the rapid and transparent dissemination of scientific knowledge, we welcome a broad range of submissions, including original research, replication studies, and well-structured null findings. Every valid investigation, regardless of its outcome, contributes valuable insights to the scientific community.</p>
-                            <a href="#" class="read-more">Read more</a>
                         </article>
-
                     </section>
                 </div>
 
@@ -114,7 +436,8 @@
                     <!-- Journal Logo -->
                     <div class="sidebar-section">
                         <div class="sidebar-logo">
-                            <img src="assets/Vivrtih-main-logo.svg" alt="Vivrtih Journal" class="sidebar-logo-img">
+                             <!-- Placeholder for the main logo. The original path was 'assets/Vivrtih-main-logo.svg' -->
+                            <img src="https://placehold.co/150x150/cccccc/333333?text=Journal+Logo" alt="Vivrtih Journal" class="sidebar-logo-img">
                         </div>
                     </div>
 
@@ -136,17 +459,6 @@
                             <p><strong>Email:</strong> editor@Vivrtihjournal.com</p>
                             <p><strong>Website:</strong> www.Vivrtihjournal.com</p>
                             <p><strong>Address:</strong> Bengaluru</p>
-                        </div>
-                    </div>
-
-                    <!-- Twitter Feed -->
-                    <div class="sidebar-section">
-                        <h3>Twitter Feed</h3>
-                        <div class="twitter-feed">
-                            <a href="https://twitter.com/@VivrtihJournal" class="twitter-link" target="_blank">
-                                <i class="fab fa-twitter"></i>
-                                Tweets by @VivrtihJournal
-                            </a>
                         </div>
                     </div>
                 </aside>
@@ -182,12 +494,22 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Vivrtih Journal of Food Science and Clinical Nutrition. All rights reserved.</p>
-              </div>
+            </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
-
-

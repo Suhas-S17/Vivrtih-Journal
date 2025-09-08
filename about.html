@@ -11,11 +11,269 @@
     <meta name="format-detection" content="telephone=no">
     <title>About - Vivrtih Journal of Food Science and Clinical Nutrition</title>
     <meta name="description" content="Learn about the Vivrtih Journal's mission, scope, and commitment to publishing high-quality student research in food science and clinical nutrition.">
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header and Navigation */
+        .header {
+            background-color: #fff;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-brand .logo {
+            height: 50px;
+        }
+
+        .nav-toggle {
+            cursor: pointer;
+            display: block; /* Show by default on mobile */
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        .nav-menu {
+            display: none; /* Hide by default on mobile */
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            transition: max-height 0.4s ease-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .nav-menu.active {
+            display: flex;
+            max-height: 500px; /* Adjust as needed */
+        }
+
+        .nav-menu a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            border-bottom: 1px solid #eee;
+            transition: color 0.3s;
+        }
+        
+        .nav-link.active {
+            color: #007bff;
+        }
+
+        .nav-menu a:hover {
+            color: #007bff;
+        }
+
+        @media (min-width: 768px) {
+            .navbar {
+                flex-wrap: nowrap;
+            }
+
+            .nav-toggle {
+                display: none;
+            }
+
+            .nav-menu {
+                display: flex;
+                flex-direction: row;
+                width: auto;
+                max-height: none;
+                overflow: visible;
+                border-top: none;
+            }
+
+            .nav-menu a {
+                border-bottom: none;
+            }
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #004080;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: 700;
+        }
+        
+        .page-header p {
+            font-weight: 300;
+        }
+        
+        /* Main Content Grid */
+        .main-content {
+            padding: 40px 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                order: -1; /* Puts the sidebar at the top on small screens */
+            }
+        }
+
+        /* Left Column Sections */
+        .content-left {
+            padding: 20px;
+        }
+
+        .section h2 {
+            color: #004080;
+            margin-top: 0;
+            border-bottom: 2px solid #004080;
+            padding-bottom: 10px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .card p {
+            text-align: justify;
+        }
+
+        .card ul {
+            padding-left: 20px;
+            text-align: left;
+        }
+        
+        .card ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section h3 {
+            color: #004080;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+
+        .quick-facts .fact {
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #004080;
+            color: #fff;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-section {
+            flex: 1 1 200px;
+        }
+
+        .footer-section h4 {
+            color: #fff;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-section li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section li a:hover {
+            color: #ccc;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5em;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ccc;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #fff;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -24,7 +282,8 @@
             <nav class="navbar">
                 <div class="nav-brand">
                     <a href="index.html">
-                        <img src="assets/Vivrtih-logo.svg" alt="Vivrtih Journal Logo" class="logo">
+                        <!-- Placeholder for logo. Original path was 'assets/Vivrtih-logo.svg' -->
+                        <img src="https://placehold.co/150x50/cccccc/333333?text=Logo" alt="Vivrtih Journal Logo" class="logo">
                     </a>
                 </div>
                 <div class="nav-toggle" id="nav-toggle">
@@ -38,8 +297,8 @@
                     <a href="current-issue.html" class="nav-link">Current Issue</a>
                     <a href="archives.html" class="nav-link">Archives</a>
                     <a href="submissions.html" class="nav-link">Submissions</a>
-                    <a href="editorial-policy-board.html" class="nav-link">Editorial Team</a>
-                    <a href="contact-us.html" class="nav-link">Contact</a>
+                    <a href="editorial-policies-and-board.html" class="nav-link">Editorial Team</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
                 </div>
             </nav>
         </div>
@@ -63,12 +322,11 @@
                         <div class="card">
                             <p>Vivrtih Journal of Food Science and Clinical Nutrition is driven by a vision to:</p>
                             <ul>
-                            <li><strong>Catalyse Innovation:</strong> We stimulate multidisciplinary research that converges insights from various scientific domains, thereby unveiling new strategies to tackle modern health and food challenges.</li>
-                            <li><strong>Promote Excellence:</strong> We uphold rigorous peer-review standards to ensure that each published paper contributes robust, evidence-based knowledge.</li>
-                            <li><strong>Encourage Collaboration:</strong> We connect researchers, clinicians, policymakers, and industry experts to foster dialogue and collaborative solutions that address global health issues from a nutrition perspective.</li>
-                            <li><strong>Enhance Real-World Impact:</strong> We emphasise translational research that not only deepens theoretical understanding but also informs practice, policy-making, and community health initiatives.</li>
-                             </ul>
-                        </div>
+                                <li><strong>Catalyse Innovation:</strong> We stimulate multidisciplinary research that converges insights from various scientific domains, thereby unveiling new strategies to tackle modern health and food challenges.</li>
+                                <li><strong>Promote Excellence:</strong> We uphold rigorous peer-review standards to ensure that each published paper contributes robust, evidence-based knowledge.</li>
+                                <li><strong>Encourage Collaboration:</strong> We connect researchers, clinicians, policymakers, and industry experts to foster dialogue and collaborative solutions that address global health issues from a nutrition perspective.</li>
+                                <li><strong>Enhance Real-World Impact:</strong> We emphasise translational research that not only deepens theoretical understanding but also informs practice, policy-making, and community health initiatives.</li>
+                            </ul>
                         </div>
                     </section>
 
@@ -76,9 +334,8 @@
                         <h2>Aim and Scope</h2>
                         <div class="card">
                             <p>The journal publishes a diverse range of article types, including Original Articles, Reviews, Case Studies, Editorials, Protocol Papers, Short Reports, Mini Reviews, Commentaries, Perspectives, Opinion Papers, and White Papers. We are committed to fostering a comprehensive and interdisciplinary understanding of the evolving fields of food science, clinical nutrition, and food technology, but are not limited to, the following areas:</p>
-
                             <ul>
-                               <li>Clinical Nutrition & Dietetics</li>
+                                <li>Clinical Nutrition & Dietetics</li>
                                 <li>Community Nutrition</li>
                                 <li>Consumer Behaviour and Food Marketing</li>
                                 <li>Epidemological Studies</li>
@@ -98,10 +355,10 @@
                                 <li>Nutrition Science</li>
                                 <li>Nutritional Immunology</li>
                                 <li>Public Health Nutrition</li>
-                                <li>Sports Nutrition</li>                 
-                                </ul>
+                                <li>Sports Nutrition</li>
+                            </ul>
                             <p>Our commitment to transparent science means we also encourage studies that may be overlooked by others, such as, studies with small sample sizes (when convincingly justified), replication research, null findings (provided this is not due to methodological shortcomings), and studies conducted by students and young researchers because we believe that every valid investigation regardless of its size or outcome contributes valuable insights to the cumulative and transparent process of scientific inquiry, fostering innovation and rigor.</p>
-                       <p>This does not mean that such studies will be acceptable "automatically" for Publication. The same scientific quality criteria will be applied as they are established by the journal and means that implications from small sample size, replicative character and lacking statistical "significance" will have to be appropriately discussed.</p>
+                            <p>This does not mean that such studies will be acceptable "automatically" for Publication. The same scientific quality criteria will be applied as they are established by the journal and means that implications from small sample size, replicative character and lacking statistical "significance" will have to be appropriately discussed.</p>
                         </div>
                     </section>
 
@@ -110,38 +367,41 @@
                         <div class="card">
                             <h3>Open Access Policy</h3>
                             <p>Vivrtih Journal of Food Science and Clinical Nutrition is committed to open-access publishing, ensuring that all content is freely accessible to users without charge. Open access allows anyone to read, download, copy, distribute, print, search, or link to full texts of articles without needing prior permission from the publisher or author. Our journal supports the open exchange of knowledge while adhering to ethical publishing standards set by organizations like the COPE and ICMJE. By adopting open access, we enhance the visibility, accessibility, and impact of research globally.</p>
-                          
+                            
                             <h3>Publishing in an open-access journal</h3>
                             <p>Publishing in an open-access journal offers several key advantages for authors, ensuring that your research is freely available to the global scientific community and increases the visibility and impact of your work, and promotes the wider dissemination of knowledge, increasing its visibility and impact.</p>
-    <ul>
-        <li><b>Free Accessibility:</b> Your research is available to everyone, eliminating subscription or price barriers. Articles are made accessible online as soon as they are published, with no embargo period.</li>
-        <li><b>Creative Commons License:</b> All articles are published under a Creative Commons (CC BY) license, enabling broad distribution and reuse, provided that proper citation is given to the original source.</li>
-        <li><b>Higher Visibility and Citation Impact:</b> Due to their wide availability, open-access articles typically receive more citations.</li>
-        <li><b>Lower Publishing Costs:</b> The article processing charge (APC) is often covered by institutions or funding bodies, reducing the financial burden on authors.</li>
-        <li><b>Self-Archiving Policy:</b> The journal’s policy allows authors to archive the publisher’s version/PDF in any repository.</li>
-           </ul>
-           </div>        
-    </section>
-
-<section class="section">
-  <h2>Copyright Policy</h2>
-  <div class="card">
-   <h3>Authors’ Rights</h3>
-   <p>Authors retain the copyright for their articles published in Vivrtih Journal of Food Science and Clinical Nutrition. This means that the intellectual property rights remain with the author(s), allowing them to control how their work is used while ensuring proper attribution is given.</p>
-    <h3>Plagiarism and Ethical Standards</h3>
-     <p>We maintain strict policies against plagiarism and academic misconduct. All submissions to VJFSCN must adhere to ethical research standards, ensuring that the work is original and properly cites the contributions of others. Any cases of suspected plagiarism or unethical practices will be investigated thoroughly and may result in the retraction of the publication.</p>
-      <p></p>
-      <h3>Publishing Rights</h3>
-      <p>By submitting an article for publication, authors grant VJFSCN a non-exclusive license to publish the work, including the right to reproduce, distribute, and make the work accessible online. This license allows VJFSCN to host and distribute the article through its platform and authorised repositories.</p>
-      <h3>Creative Commons License</h3>
-       <p>We adhere to the Creative Commons Attribution 4.0 International License. This license allows for personal, educational, and commercial use without the need for explicit permission, provided proper attribution is given to the original author.</p>
-       <p>We will address any instances of IP infringement promptly by investigating and taking appropriate actions in accordance with copyright laws.</p>
-       <h3>Self-Archiving Policy</h3>
-       <p>Authors are encouraged to deposit their articles in open-access repositories as post-publication versions. This policy promotes broader dissemination and access to research findings</p>
-         </div>
+                            <ul>
+                                <li><b>Free Accessibility:</b> Your research is available to everyone, eliminating subscription or price barriers. Articles are made accessible online as soon as they are published, with no embargo period.</li>
+                                <li><b>Creative Commons License:</b> All articles are published under a Creative Commons (CC BY) license, enabling broad distribution and reuse, provided that proper citation is given to the original source.</li>
+                                <li><b>Higher Visibility and Citation Impact:</b> Due to their wide availability, open-access articles typically receive more citations.</li>
+                                <li><b>Lower Publishing Costs:</b> The article processing charge (APC) is often covered by institutions or funding bodies, reducing the financial burden on authors.</li>
+                                <li><b>Self-Archiving Policy:</b> The journal’s policy allows authors to archive the publisher’s version/PDF in any repository.</li>
+                            </ul>
+                        </div>
                     </section>
 
-                        <section class="section">
+                    <section class="section">
+                        <h2>Copyright Policy</h2>
+                        <div class="card">
+                            <h3>Authors’ Rights</h3>
+                            <p>Authors retain the copyright for their articles published in Vivrtih Journal of Food Science and Clinical Nutrition. This means that the intellectual property rights remain with the author(s), allowing them to control how their work is used while ensuring proper attribution is given.</p>
+                            
+                            <h3>Plagiarism and Ethical Standards</h3>
+                            <p>We maintain strict policies against plagiarism and academic misconduct. All submissions to VJFSCN must adhere to ethical research standards, ensuring that the work is original and properly cites the contributions of others. Any cases of suspected plagiarism or unethical practices will be investigated thoroughly and may result in the retraction of the publication.</p>
+                            
+                            <h3>Publishing Rights</h3>
+                            <p>By submitting an article for publication, authors grant VJFSCN a non-exclusive license to publish the work, including the right to reproduce, distribute, and make the work accessible online. This license allows VJFSCN to host and distribute the article through its platform and authorised repositories.</p>
+                            
+                            <h3>Creative Commons License</h3>
+                            <p>We adhere to the Creative Commons Attribution 4.0 International License. This license allows for personal, educational, and commercial use without the need for explicit permission, provided proper attribution is given to the original author.</p>
+                            <p>We will address any instances of IP infringement promptly by investigating and taking appropriate actions in accordance with copyright laws.</p>
+                            
+                            <h3>Self-Archiving Policy</h3>
+                            <p>Authors are encouraged to deposit their articles in open-access repositories as post-publication versions. This policy promotes broader dissemination and access to research findings</p>
+                        </div>
+                    </section>
+
+                    <section class="section">
                         <h2>Indexing and Archiving</h2>
                         <div class="card">
                             <p>We are working to ensure the Vivrtih Journal receives appropriate recognition in the academic community:</p>
@@ -154,7 +414,7 @@
                                 <li>zenodo</li>
                                 <li>Academia.edu</li>
                                 <li>Bepress</li>
-                                </ul>
+                            </ul>
                         </div>
                     </section>
                 </div>
@@ -168,10 +428,10 @@
                                 <strong>Founded:</strong> 2025
                             </div>
                             <div class="fact">
-                                <strong>Publisher:</strong>Vivrtih Scientific
+                                <strong>Publisher:</strong> Vivrtih Scientific
                             </div>
                             <div class="fact">
-                                <strong>Frequency:</strong> Continuous model with 2 isues per year
+                                <strong>Frequency:</strong> Continuous model with 2 issues per year
                             </div>
                             <div class="fact">
                                 <strong>Access:</strong> Open Access
@@ -184,8 +444,9 @@
                             </div>
                         </div>
                     </div>
-                    </aside>
-
+                </aside>
+            </div>
+        </div>
     </main>
     <!-- Footer -->
     <footer class="footer">
@@ -196,14 +457,14 @@
                     <p>An international, open-access, peer-reviewed journal.</p>
                 </div>
                 <div class="footer-section">
-                    
+                    <!-- This section was empty in the original code, but I've kept the structure. -->
                 </div>
                 <div class="footer-section">
                     <h4>Follow Us</h4>
                     <div class="social-links">
-                      <a href="https://twitter.com/@VivrtihJournal" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-    <i class="fab fa-twitter"></i>
-</a>
+                        <a href="https://twitter.com/@VivrtihJournal" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
                         <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
@@ -211,28 +472,22 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Vivrtih Journal of Food Science and Clinical Nutrition. All rights reserved.</p>
-          </div>
+            </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
